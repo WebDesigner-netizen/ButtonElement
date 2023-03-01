@@ -1,74 +1,137 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Hiiiiii</title>
-<style>
-p {
-text-align: center;
-font-size: 32px;
-font-family: Candara, Oswald;
-}
-img {
-display: block;
-margin: 0 auto;
-width: 25%;
-}
-</style>
+        <meta charset="utf8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Hiiiiii</title>
+        <link rel="icon" href="love.png" type="image/icon type">
+
+        <style>
+            p {
+            text-align: center;
+            font-size: 300%;
+            font-family: Candara, Oswald;   
+            }
+
+            img {
+            display: block;
+            margin: 0 auto;
+            width: 25%;
+            border-radius: 10%;
+
+            margin-top: -1.5%;
+            }           
+        </style>
 </head>
+
 <body>
-<p>Can we hang out soon 🥺 </p>
-<img src="https://media.tenor.com/zGm5acSjHCIAAAAM/cat-begging.gif">
-</body>
-<title>Botões</title>
-<style>
+    <p>Can we hang out soon 🥺 </p>
+    <img src="https://media.tenor.com/zGm5acSjHCIAAAAM/cat-begging.gif">
 
-#botao1 {
-position: fixed;
-top: 74%;
-left: 55%;
-background-color: dodgerblue;
-padding: 10px;
-height: 40px;
-width: 150px;
-transform: translate(-50%, -50%);
-}
+    <style>
+        #botao1 {
+        position: fixed;
+        top: 80%;
+        left: 55%;
+        background-color: rgba(255,105,180,0.2);
+        padding: 10px;
+        height: 40px;
+        width: 150px;
+        transform: translate(-50%, -50%);
+        border-radius: 6px;
+        font-size: medium;
+        }
 
-#botao2 {
-position: absolute;
-  left: 39%;
-  top: 71%;
-  background-color: dodgerblue;
-  padding: 10px;
-  height: 40px;
-  width: 150px;
-  transition: .5s;
-}
+        #botao2 {
+          position: absolute;
+          left: 39%;
+          top: 77.2%;
+          background-color: rgba(255,105,180,0.2);
+          padding: 10px;
+          height: 40px;
+          width: 150px;
+          transition: .5s;
+          border-radius: 6px;
+          font-size: medium;
+        }
 
-</style>
-</head>
-<body>
-  <style>
-    body {
-      background-image: url('2.jpg');
-      background-repeat: no-repeat; 
-      background-attachment: fixed;
-      background-size: cover; */
-    }
+        #overlay {
+          position: fixed;
+          display: none;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0,0,0,0.9);
+          z-index: 2;
+          cursor: pointer;
+        }
+
+        #text{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          font-size: 50px;
+          color: white;
+          transform: translate(-50%,-50%);
+          -ms-transform: translate(-50%,-50%);
+
+          text-align: center;
+        }
+    </style>
+
+    <style>
+        body {
+          background-image: url('2.jpg');
+          background-repeat: no-repeat; 
+          background-attachment: fixed;
+          background-size: cover; 
+        }
     </style>
     
-<button id="botao1">YES BABY!</button>
-<button id="botao2">NO</button>
-<script>
-const button2 = document.getElementById('botao2');
-let left = 40;
-button2.addEventListener('mouseover', function() {
-  button2.style.left = `${Math.ceil(Math.random() * 90)}%`;
-    button2.style.top = `${Math.ceil(Math.random() * 90)}%`;
-});
+    <button id="botao1" onclick="on()" class="kiss">YES BABY</button>
+    <audio src="kiss.wav" id="sound" preload="auto" hidden></audio>
+    <!-- <audio src="https://assets.codepen.io/1256430/whistle.mp3" id="sound" preload="auto" hidden></audio> -->
+    <button id="botao2">NO</button>
 
-</script>
-<script>document.getElementById('botao1').addEventListener('click', function() {
-alert('YAYY THANK U LOVE U 😘');
-});
-</script>
+    <div id="overlay" onclick="off()">
+      <div id="text">Yayyyy Love U <br> 😘</div>
+    </div>
+
+    <script>
+        function on() {
+          document.getElementById("overlay").style.display = "block";
+        }
+        
+        function off() {
+          document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+
+    <script>
+        const button2 = document.getElementById('botao2');
+        button2.addEventListener('mouseover', function() {
+              button2.style.left = `${Math.ceil(Math.random() * 90)}%`;
+              button2.style.top = `${Math.ceil(Math.random() * 90)}%`;
+        });  
+    </script>
+  
+    <script>
+        const sound = document.getElementById("sound");
+        const triggers = document.querySelectorAll(".kiss");
+
+        Array.from(triggers).forEach((trigger) => {
+          trigger.addEventListener("click", () => {
+            if (sound) {
+              sound.currentTime = 0;
+              sound.play();
+            }
+          });
+        });
+
+    </script>
+  
 </body>
 </html>
